@@ -50,40 +50,70 @@
 		<?php
 			require_once('TwitterAPIExchange.php');
 			ini_set('default_charset', 'utf-8');
-			//Use consumer tokens from twitter dev
-			$settings = array(
-				'oauth_access_token' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'consumer_key' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'consumer_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-			);
-			//request urls to twitter
-			$url = "https://api.twitter.com/1.1/search/tweets.json";
-			$urlJack = "https://api.twitter.com/1.1/statuses/user_timeline.json";
-			$requestMethod = "GET";
+			if (file_exists('data/twitter_resultK.data')) {
+			    $dataK = unserialize(file_get_contents('data/twitter_resultK.data'));
+			    $dataKate = unserialize(file_get_contents('data/twitter_resultKate.data'));
+			    $dataJ = unserialize(file_get_contents('data/twitter_resultJ.data'));
+			    $dataJack = unserialize(file_get_contents('data/twitter_resultJack.data'));
+			    if ($dataK['timestamp'] > time() - 2 * 60) {
+			        $twitter_resultK = $dataK['twitter_result'];
+			        $twitter_resultKate = $dataKate['twitter_result'];
+			        $twitter_resultJ = $dataJ['twitter_result'];
+			        $twitter_resultJack = $dataJack['twitter_result'];
+			    }
+			}
+			//USE THIS TO CACHE DATA TO NOT EXCEED API RATE
+			if (!$twitter_resultK) { 
+			// cache doesn't exist or is older than 10 mins
+				$settings = array(
+					//Use consumer tokens from twitter dev
+					'oauth_access_token' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+				    'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+				    'consumer_key' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+				    'consumer_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+				);
+				//request urls to twitter
+				$url = "https://api.twitter.com/1.1/search/tweets.json";
+				$urlJack = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+				$requestMethod = "GET";
 
-			//query strings appeneded to request urls
-			$getfieldKate = "?q=from:katespadeny+OR+from:katespadeuk&count=100&result_type=recent&lang=en";
-			$getfield = '?q=kate+spade+OR+#missadventure+OR+katespade&count=100&result_type=recent&lang=en';
-			$getfieldJack = "?screen_name=jackspadeny&count=3200&include_rts=true";
-			$getfieldJ = '?q=jackspadeny&count=100';
+				//query strings appeneded to request urls
+				$getfieldKate = "?q=from:katespadeny+OR+from:katespadeuk&count=100&result_type=recent&lang=en";
+				$getfield = '?q=kate+spade+OR+#missadventure+OR+katespade&count=100&result_type=recent&lang=en';
+				$getfieldJack = "?screen_name=jackspadeny&count=3200&include_rts=true";
+				$getfieldJ = '?q=jackspadeny&count=100';
+				//start it up
+				$twitter = new TwitterAPIExchange($settings);
 
-			//start it up
-			$twitter = new TwitterAPIExchange($settings);
+				//get data back via OAuth
+				$string = json_decode($twitter->setGetfield($getfield)
+				->buildOauth($url, $requestMethod)
+				->performRequest(),$assoc = TRUE);
+				$stringKate = json_decode($twitter->setGetfield($getfieldKate)
+				->buildOauth($url, $requestMethod)
+				->performRequest(),$assoc = TRUE);
+				$stringJ = json_decode($twitter->setGetfield($getfieldJ)
+				->buildOauth($url, $requestMethod)
+				->performRequest(),$assoc = TRUE);
+				$stringJack = json_decode($twitter->setGetfield($getfieldJack)
+				->buildOauth($urlJack, $requestMethod)
+				->performRequest(),$assoc = TRUE);
 
-			//get data back via OAuth
-			$string = json_decode($twitter->setGetfield($getfield)
-			->buildOauth($url, $requestMethod)
-			->performRequest(),$assoc = TRUE);
-			$stringKate = json_decode($twitter->setGetfield($getfieldKate)
-			->buildOauth($url, $requestMethod)
-			->performRequest(),$assoc = TRUE);
-			$stringJ = json_decode($twitter->setGetfield($getfieldJ)
-			->buildOauth($url, $requestMethod)
-			->performRequest(),$assoc = TRUE);
-			$stringJack = json_decode($twitter->setGetfield($getfieldJack)
-			->buildOauth($urlJack, $requestMethod)
-			->performRequest(),$assoc = TRUE);
+			    $datak = array ('twitter_result' => $string, 'timestamp' => time());
+			    $dataKate = array ('twitter_result' => $stringKate, 'timestamp' => time());
+			    $dataJ = array ('twitter_result' => $stringJ, 'timestamp' => time());
+			    $dataJack = array ('twitter_result' => $stringJack, 'timestamp' => time());
+			    file_put_contents('data/twitter_resultK.data', serialize($datak));
+			    $twitter_resultK = unserialize(file_get_contents('data/twitter_resultK.data'))['twitter_result'];
+			    file_put_contents('data/twitter_resultKate.data', serialize($dataKate));
+			    $twitter_resultKate = unserialize(file_get_contents('data/twitter_resultKate.data'))['twitter_result'];
+			    file_put_contents('data/twitter_resultJ.data', serialize($dataJ));
+			    $twitter_resultJ = unserialize(file_get_contents('data/twitter_resultJ.data'))['twitter_result'];
+			    file_put_contents('data/twitter_resultJack.data', serialize($dataJack));
+			    $twitter_resultJack = unserialize(file_get_contents('data/twitter_resultJack.data'))['twitter_result'];
+
+			}
+
 		?>
 		<!-- Move to seperate JS file -->
 		<script>
@@ -141,10 +171,11 @@
 				}
 			};
 			//Grab PHP string as JS variable
-			var obj = <?php echo json_encode($string,JSON_PRETTY_PRINT); ?>;
-			var objKate = <?php echo json_encode($stringKate,JSON_PRETTY_PRINT); ?>;
-			var objJ = <?php echo json_encode($stringJ,JSON_PRETTY_PRINT); ?>;
-			var objJack = <?php echo json_encode($stringJack,JSON_PRETTY_PRINT); ?>;
+			var obj = <?php echo json_encode($twitter_resultK,JSON_PRETTY_PRINT); ?>;
+			var objKate = <?php echo json_encode($twitter_resultKate,JSON_PRETTY_PRINT); ?>;
+			var objJ = <?php echo json_encode($twitter_resultJ,JSON_PRETTY_PRINT); ?>;
+			var objJack = <?php echo json_encode($twitter_resultJack,JSON_PRETTY_PRINT); ?>;
+
 
 			var onlyMedia = splitObjMedia(obj, obj.statuses.length, false).mediaArr;
 			var onlyText = splitObjMedia(obj, obj.statuses.length, false).textArr;
