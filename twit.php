@@ -52,10 +52,10 @@
 			ini_set('default_charset', 'utf-8');
 			//Use consumer tokens from twitter dev
 			$settings = array(
-				'oauth_access_token' => "335716959-RMAbLsG9k0W5jDKqTBpAJI8nXUVte3KNCZJZdnhH",
-			    'oauth_access_token_secret' => "FzlSogRw6tpSUXdAhODPUpYt8CvK2AzzhpVquqxRaRNqj",
-			    'consumer_key' => "vTaaUVXJ6t6QPts0R7Ud1gASc",
-			    'consumer_secret' => "o0Whf2KARnknbSNVVRfSIJ4DyMuM9Nvwl9ODLLjUCudHyNfMHg"
+				'oauth_access_token' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'consumer_key' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'consumer_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 			);
 			//request urls to twitter
 			$url = "https://api.twitter.com/1.1/search/tweets.json";
