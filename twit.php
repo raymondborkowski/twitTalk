@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>KS Real Time Talk</title>
@@ -52,10 +52,10 @@
 			ini_set('default_charset', 'utf-8');
 			//Use consumer tokens from twitter dev
 			$settings = array(
-				'oauth_access_token' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'consumer_key' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'consumer_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+				'oauth_access_token' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'consumer_key' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'consumer_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 			);
 			//request urls to twitter
 			$url = "https://api.twitter.com/1.1/search/tweets.json";
@@ -180,8 +180,6 @@
 		</script>
 		<div class="layout">
 			<div id="freewall" class="free-wall">
-			
-				<!--DESCRIPTION -->
 				<div class="item size21 level1">
 					<div class="padding">
 						<h2>Kate Spade Real Time Talk</h2>
@@ -201,11 +199,28 @@
 						</div>
 					</div>
 
-					<div class="item size11">
-						<div id = "ksText1ID" class = "divCenter">
-							<script>displayMedia(ksText1.length, "ksText1ID", " ", ksText1, false);</script>
-						</div>
-					</div>
+					<div class="size11" data-fixSize=0 data-nested=".size2-2" data-cellW=70 data-cellH=70 >
+						<a href = "https://www.facebook.com/katespadeny">
+							<div class="item size2-2">
+								<i class="icon-facebook icon-2x"></i><br>Kate Spade
+							</div>
+						</a>
+						<a href = "https://twitter.com/katespadeny">
+							<div class="item size2-2">
+									<i class="icon-twitter icon-2x"></i><br>Kate Spade
+							</div>
+						</a>
+						<a href = "https://www.linkedin.com/company/kate-spade-new-york">
+							<div class="item size2-2">								
+								<i class="icon-linkedin icon-2x"></i><br>Kate Spade
+							</div>
+						</a>
+						<a href = "https://www.instagram.com/katespadeny/">
+							<div class="item size2-2">
+								<i class="icon-instagram icon-2x"></i><br>Kate Spade
+							</div>
+						</a>
+					</div>	
 					<div class="item size11">
 						<div id = "otherMedia3IMG" class = "map2">
 						</div>
@@ -215,6 +230,10 @@
 						</div>
 					</div>
 				</div>
+
+
+
+
 				<!-- KATE SPADE WALLPAPER LINK -->
 				<div class="item size21 level1 desktop-box">
 					<a href="https://katespade.com">
@@ -224,28 +243,11 @@
 				</div>
 				<!-- KATE SPADE TWEETS AND SOCIAL -->
 				<div class="size22 level1" data-nested=".size11" data-cellW=150 data-cellH=150 data-gutterX=10 >
-					<div class="size11" data-fixSize=0 data-nested=".size2-2" data-cellW=70 data-cellH=70 >
-						<a href = "https://www.facebook.com/katespadeny">
-							<div class="item size2-2">
-								<i class="icon-facebook icon-2x"></i>
-							</div>
-						</a>
-						<a href = "https://twitter.com/katespadeny">
-							<div class="item size2-2">
-									<i class="icon-twitter icon-2x"></i>
-							</div>
-						</a>
-						<a href = "https://www.linkedin.com/company/kate-spade-new-york">
-							<div class="item size2-2">								
-								<i class="icon-linkedin icon-2x"></i>
-							</div>
-						</a>
-						<a href = "https://plus.google.com/115965100513811940775/posts">
-							<div class="item size2-2">
-								<i class="icon-google-plus icon-2x"></i>
-							</div>
-						</a>
-					</div>		
+					<div class="item size11">
+						<div id = "ksText1ID" class = "divCenter">
+							<script>displayMedia(ksText1.length, "ksText1ID", " ", ksText1, false);</script>
+						</div>	
+					</div>
 					<div class="item size11">
 							<div id = "ksText4ID" class = "divCenter">
 								<script>displayMedia(ksText4.length, "ksText4ID", " ", ksText4, false);</script>
@@ -262,7 +264,14 @@
 						</div>
 					</div>
 				</div>
-				<!-- JS SPLIT WITH BANNER MIN VIEW -->
+				<!-- OTHER HUMAN KS ENTITY IMAGE -->
+				<!--<div class="item size22 level1">
+					<div id = "otherMedia1IMG" class = "map"></div>
+					<div id = "bottomTextOtherMedia" class = "tempBottom">
+						<script>displayMedia(otherMedia1.length, "bottomTextOtherMedia", "otherMedia1IMG", otherMedia1, true);</script>
+					</div>
+				</div>-->
+
 				<div class="size22 level1" data-fixSize=0 data-nested=".level-1" data-cellW=150 data-cellH=150 data-gutterX=10 >
 					<div class="item level-1 size42">
 						<a href="https://jackspade.com">
@@ -286,27 +295,35 @@
 						</div>
 					</div>
 				</div>
+
+
+
+
 				<!-- JACK SPADE TWEETS AND SOCIAL STUFF -->
 				<div class="size22 level1" data-nested=".size11" data-cellW=150 data-cellH=150 data-gutterX=10 >
 					<div class="size11" data-fixSize=0 data-nested=".size2-2" data-cellW=70 data-cellH=70 >
 						<a href = "https://www.facebook.com/jackspadeny">
 							<div class="item size2-2">
 								<i class="icon-facebook icon-2x"></i>
+								<br>Jack Spade
 							</div>
 						</a>
 						<a href = "https://twitter.com/jackspadeny">
 							<div class="item size2-2">
 									<i class="icon-twitter icon-2x"></i>
+									<br>Jack Spade
 							</div>
 						</a>
 						<a href = "https://www.linkedin.com/company/jack-spade">
 							<div class="item size2-2">								
 								<i class="icon-linkedin icon-2x"></i>
+								<br>Jack Spade
 							</div>
 						</a>
-						<a href = "https://plus.google.com/115965100513811940775/posts">
+						<a href = "https://www.instagram.com/jackspadeny/?hl=en">
 							<div class="item size2-2">
-								<i class="icon-google-plus icon-2x"></i>
+								<i class="icon-instagram icon-2x"></i>
+								<br>Jack Spade
 							</div>
 						</a>
 					</div>
@@ -343,9 +360,14 @@
 						</script>
 					</div>
 				</div>
-				<!-- JS MEDIA SPLIT WITH BANNER -->
+
+
+
+
+
+
 				<div class="size22 level1" data-fixSize=0 data-nested=".level-1" data-cellW=150 data-cellH=150 data-gutterX=10 >
-					<div class="brick level-1 size42">
+					<div class="item level-1 size42">
 						<a href="https://jackspade.com">
 							<div class="wallpaperJack">
 								<div class="text-bottom">
@@ -354,14 +376,41 @@
 							</div>
 						</a>
 					</div>
-					<div class="brick level-1 size222"></div>
-					<div class="brick level-1 size222">
-						<div id = "ksText2ID" class = "divCenter">
-							<script>displayMedia(ksText2.length, "ksText2ID", " ", ksText2, false);</script>
+
+
+
+
+
+
+
+
+					<div class="item level-1 size222">
+						<div id = "otherIDJACK" class = "divCenter">
+							<script>displayMedia(onlyTextJ.length, "otherIDJACK", " ", onlyTextJ, false);</script>
+						</div>
+					</div>
+					<div class="item level-1 size222">
+						<div id = "jack1ID" class = "divCenter">
+							<script>displayMedia(jsText1.length, "jack1ID", " ", jsText1, false);</script>
 						</div>
 					</div>
 				</div>
-				<!--KS MEDIA BIG -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				<div class="item size21 level1">
 					<div id = "ksMediaIMG" class = "map2">
 					</div>
@@ -369,26 +418,38 @@
 						<script>displayMedia(ksMedia.length, "ksMediaBottomText", "ksMediaIMG", ksMedia, true);</script>
 					</div>
 				</div>
-				<!--JS MEDIA ENTITY SMALL -->
+
+
+
+
+
+
+
+				<!-- ADD NEW -->
 				<div class="item size21 level1">
-					<div id = "imgJS" class = "map2"></div>
-					<div id = "jackMedia" class = "tempBottom">
-						<script>
-							displayMedia(jsMedia.length, "jackMedia", "imgJS", jsMedia, true);
-						</script>
+					<div id = "jOtherMedia" class = "map2">
+					</div>
+					<div id = "jOtherMediaBottomText" class = "tempBottom">
+						<script>displayMedia(onlyMediaJ.length, "jOtherMediaBottomText", "jOtherMedia", onlyMediaJ, true);</script>
 					</div>
 				</div>
 
-			</div>
-		</div> 
 
+
+
+			</div> <!-- freewall -->
+		</div> <!-- layout -->
 		<script type="text/javascript">
-			//document.body.style.zoom = "90%";
+
 			var colour = [
-				"rgb(72, 166, 66)",
-				"rgb(212, 175,55)",
-				"rgb(0, 0, 0)",
-				"rgb(255,105,180)"
+				"rgb(142, 68, 173)",
+				"rgb(243, 156, 18)",
+				"rgb(211, 84, 0)",
+				"rgb(0, 106, 63)",
+				"rgb(41, 128, 185)",
+				"rgb(192, 57, 43)",
+				"rgb(135, 0, 0)",
+				"rgb(39, 174, 96)"
 			];
 
 			$(".free-wall .item").each(function() {
@@ -414,7 +475,6 @@
 				wall.fitZone();
 				$(window).trigger("resize");
 			});
-
 		</script>
 
 	</body>
