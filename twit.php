@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<title>KS Real Time Talk</title>
@@ -8,6 +8,10 @@
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="js/freewall.js"></script>
+		<script type="text/javascript" src="js/home.js"></script>
+		<?php 
+			include 'php/twit.php'; 
+		?>
 		<style type="text/css">
 			html,body {
 				margin: 0px;
@@ -46,169 +50,7 @@
 		</style>
 	</head>
 		<body>
-		<!-- PHP to get Tweeeets -->
-		<?php
-			require_once('TwitterAPIExchange.php');
-			ini_set('default_charset', 'utf-8');
-			if (file_exists('data/twitter_resultK.data')) {
-			    $dataK = unserialize(file_get_contents('data/twitter_resultK.data'));
-			    $dataKate = unserialize(file_get_contents('data/twitter_resultKate.data'));
-			    $dataJ = unserialize(file_get_contents('data/twitter_resultJ.data'));
-			    $dataJack = unserialize(file_get_contents('data/twitter_resultJack.data'));
-			    if ($dataK['timestamp'] > time() - 2 * 60) {
-			        $twitter_resultK = $dataK['twitter_result'];
-			        $twitter_resultKate = $dataKate['twitter_result'];
-			        $twitter_resultJ = $dataJ['twitter_result'];
-			        $twitter_resultJack = $dataJack['twitter_result'];
-			    }
-			}
-			//USE THIS TO CACHE DATA TO NOT EXCEED API RATE
-			if (!$twitter_resultK) { 
-			// cache doesn't exist or is older than 10 mins
-				$settings = array(
-					//Use consumer tokens from twitter dev
-					'oauth_access_token' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-				    'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-				    'consumer_key' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-				    'consumer_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-				);
-				//request urls to twitter
-				$url = "https://api.twitter.com/1.1/search/tweets.json";
-				$urlJack = "https://api.twitter.com/1.1/statuses/user_timeline.json";
-				$requestMethod = "GET";
-
-				//query strings appeneded to request urls
-				$getfieldKate = "?q=from:katespadeny+OR+from:katespadeuk&count=100&result_type=recent&lang=en";
-				$getfield = '?q=kate+spade+OR+#missadventure+OR+katespade&count=100&result_type=recent&lang=en';
-				$getfieldJack = "?screen_name=jackspadeny&count=3200&include_rts=true";
-				$getfieldJ = '?q=jackspadeny&count=100';
-				//start it up
-				$twitter = new TwitterAPIExchange($settings);
-
-				//get data back via OAuth
-				$string = json_decode($twitter->setGetfield($getfield)
-				->buildOauth($url, $requestMethod)
-				->performRequest(),$assoc = TRUE);
-				$stringKate = json_decode($twitter->setGetfield($getfieldKate)
-				->buildOauth($url, $requestMethod)
-				->performRequest(),$assoc = TRUE);
-				$stringJ = json_decode($twitter->setGetfield($getfieldJ)
-				->buildOauth($url, $requestMethod)
-				->performRequest(),$assoc = TRUE);
-				$stringJack = json_decode($twitter->setGetfield($getfieldJack)
-				->buildOauth($urlJack, $requestMethod)
-				->performRequest(),$assoc = TRUE);
-
-			    $datak = array ('twitter_result' => $string, 'timestamp' => time());
-			    $dataKate = array ('twitter_result' => $stringKate, 'timestamp' => time());
-			    $dataJ = array ('twitter_result' => $stringJ, 'timestamp' => time());
-			    $dataJack = array ('twitter_result' => $stringJack, 'timestamp' => time());
-			    file_put_contents('data/twitter_resultK.data', serialize($datak));
-			    $twitter_resultK = unserialize(file_get_contents('data/twitter_resultK.data'))['twitter_result'];
-			    file_put_contents('data/twitter_resultKate.data', serialize($dataKate));
-			    $twitter_resultKate = unserialize(file_get_contents('data/twitter_resultKate.data'))['twitter_result'];
-			    file_put_contents('data/twitter_resultJ.data', serialize($dataJ));
-			    $twitter_resultJ = unserialize(file_get_contents('data/twitter_resultJ.data'))['twitter_result'];
-			    file_put_contents('data/twitter_resultJack.data', serialize($dataJack));
-			    $twitter_resultJack = unserialize(file_get_contents('data/twitter_resultJack.data'))['twitter_result'];
-
-			}
-
-		?>
 		<!-- Move to seperate JS file -->
-		<script>
-			//Split the JS var into sepreate arrays MEDIA||TEXT
-			function splitObjMedia(object, length, isProfile){
-				var mediaArr = [], textArr = [];
-				for(var i = 0; i < length; i++){
-					//Need to check if using twitter search or twitter profile
-					if(isProfile){
-						if(object[i].entities.hasOwnProperty('media'))
-							mediaArr.push([object[i].user.screen_name,object[i].text,object[i].entities.media[0].media_url_https]);
-						else
-							textArr.push([object[i].user.screen_name,object[i].text]);
-					}
-					else{
-						if(object.statuses[i].entities.hasOwnProperty('media'))
-							mediaArr.push([object.statuses[i].user.screen_name,object.statuses[i].text,object.statuses[i].entities.media[0].media_url_https]);
-						else
-							textArr.push([object.statuses[i].user.screen_name,object.statuses[i].text]);
-					}
-				}
-				return {
-					mediaArr: mediaArr,
-					textArr: textArr
-				};
-			};
-
-			//Split the array for each div
-			function splitArray(arr, length){
-				var newArr = [];
-				for(var i = 0; i < length; i++){
-					newArr.push(arr[i]);
-					arr.shift();
-				}
-				return newArr;
-			};
-
-			//Display the items in the divs of choice
-			function displayMedia(length, bottomTextImage, classID, arr, isMedia){
-				var limit = (length - 1);
-				document.getElementById(bottomTextImage).innerHTML = "@" + arr[0][0] + ":</br>" + arr[0][1];
-				if(isMedia)
-					document.getElementById(classID).style.backgroundImage =  "url('" + arr[0][2] +"')";
-				for (var i=	1;i< arr.length;i++) {
-				   (function(ind) {
-				       setTimeout(function(){
-				           document.getElementById(bottomTextImage).innerHTML = "@" + arr[ind][0] + ":</br>" + arr[ind][1];
-				           	if(isMedia)
-				           		document.getElementById(classID).style.backgroundImage =  "url('" + arr[ind][2] +"')";
-				           	if(ind == limit){
-				               displayMedia(length, bottomTextImage, classID, arr, isMedia );
-				           	}
-				       }, 1000 + (1000 * ind));
-				   })(i);
-				}
-			};
-			//Grab PHP string as JS variable
-			var obj = <?php echo json_encode($twitter_resultK,JSON_PRETTY_PRINT); ?>;
-			var objKate = <?php echo json_encode($twitter_resultKate,JSON_PRETTY_PRINT); ?>;
-			var objJ = <?php echo json_encode($twitter_resultJ,JSON_PRETTY_PRINT); ?>;
-			var objJack = <?php echo json_encode($twitter_resultJack,JSON_PRETTY_PRINT); ?>;
-
-
-			var onlyMedia = splitObjMedia(obj, obj.statuses.length, false).mediaArr;
-			var onlyText = splitObjMedia(obj, obj.statuses.length, false).textArr;
-			var onlyMediaKate = splitObjMedia(objKate, objKate.statuses.length, false).mediaArr;
-			var onlyTextKate = splitObjMedia(objKate, objKate.statuses.length, false).textArr;
-			var onlyMediaJ = splitObjMedia(objJ, objJ.statuses.length, false).mediaArr;
-			var onlyTextJ = splitObjMedia(objJ, objJ.statuses.length, false).textArr;
-			var onlyMediaJack = splitObjMedia(objJack, objJack.length, true).mediaArr;
-			var onlyTextJack = splitObjMedia(objJack, objJack.length, true).textArr;
-
-			//split them to display them in seperate divs
-			var otherMediaLength = Math.floor(onlyMedia.length/3);
-			var ksTextLength = Math.floor(onlyTextKate.length/6);
-			var jsTextLength = Math.floor(onlyTextJack.length/3);
-			var jsMediaLength = Math.floor(onlyMediaJack.length/2);
-			var otherText1 = splitArray(onlyText,Math.floor(onlyText.length/2));//used
-			var otherText2 = onlyText;//used
-			var otherMedia1 = splitArray(onlyMedia,otherMediaLength); //used
-			var otherMedia2 = splitArray(onlyMedia,otherMediaLength);//used
-			var otherMedia3 = onlyMedia;//used
-			var ksText1 = splitArray(onlyTextKate,ksTextLength);//Used
-			var ksText2 = splitArray(onlyTextKate,ksTextLength);//used
-			var ksText3 = splitArray(onlyTextKate,ksTextLength);//used
-			var ksText4 = splitArray(onlyTextKate,ksTextLength);//used
-			var ksText5 = splitArray(onlyTextKate,ksTextLength);//used
-			var ksText6 = onlyTextKate;//used
-			var ksMedia = onlyMediaKate; //used
-			var jsText1 = splitArray(onlyTextJack,jsTextLength);//used
-			var jsText2 = splitArray(onlyTextJack,jsTextLength);//used
-			var jsText3 = onlyTextJack;//used
-			var jsMedia = splitArray(onlyMediaJack,jsMediaLength);//used
-			var jsMedia1 = onlyMediaJack; //used
-		</script>
 		<div class="layout">
 			<div id="freewall" class="free-wall">
 				<div class="item size21 level1">
@@ -261,10 +103,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
-
 				<!-- KATE SPADE WALLPAPER LINK -->
 				<div class="item size21 level1 desktop-box">
 					<a href="https://katespade.com">
@@ -295,14 +133,6 @@
 						</div>
 					</div>
 				</div>
-				<!-- OTHER HUMAN KS ENTITY IMAGE -->
-				<!--<div class="item size22 level1">
-					<div id = "otherMedia1IMG" class = "map"></div>
-					<div id = "bottomTextOtherMedia" class = "tempBottom">
-						<script>displayMedia(otherMedia1.length, "bottomTextOtherMedia", "otherMedia1IMG", otherMedia1, true);</script>
-					</div>
-				</div>-->
-
 				<div class="size22 level1" data-fixSize=0 data-nested=".level-1" data-cellW=150 data-cellH=150 data-gutterX=10 >
 					<div class="item level-1 size42">
 						<a href="https://jackspade.com">
@@ -326,10 +156,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
-
 				<!-- JACK SPADE TWEETS AND SOCIAL STUFF -->
 				<div class="size22 level1" data-nested=".size11" data-cellW=150 data-cellH=150 data-gutterX=10 >
 					<div class="size11" data-fixSize=0 data-nested=".size2-2" data-cellW=70 data-cellH=70 >
@@ -391,12 +217,6 @@
 						</script>
 					</div>
 				</div>
-
-
-
-
-
-
 				<div class="size22 level1" data-fixSize=0 data-nested=".level-1" data-cellW=150 data-cellH=150 data-gutterX=10 >
 					<div class="item level-1 size42">
 						<a href="https://jackspade.com">
@@ -426,22 +246,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 				<div class="item size21 level1">
 					<div id = "ksMediaIMG" class = "map2">
 					</div>
@@ -449,13 +253,6 @@
 						<script>displayMedia(ksMedia.length, "ksMediaBottomText", "ksMediaIMG", ksMedia, true);</script>
 					</div>
 				</div>
-
-
-
-
-
-
-
 				<!-- ADD NEW -->
 				<div class="item size21 level1">
 					<div id = "jOtherMedia" class = "map2">
@@ -464,10 +261,6 @@
 						<script>displayMedia(onlyMediaJ.length, "jOtherMediaBottomText", "jOtherMedia", onlyMediaJ, true);</script>
 					</div>
 				</div>
-
-
-
-
 			</div> <!-- freewall -->
 		</div> <!-- layout -->
 		<script type="text/javascript">
