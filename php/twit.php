@@ -18,10 +18,10 @@
 		// cache doesn't exist or is older than 10 mins
 			$settings = array(
 				//Use consumer tokens from twitter dev
-				'oauth_access_token' => "335716959-RMAbLsG9k0W5jDKqTBpAJI8nXUVte3KNCZJZdnhH",
-			    'oauth_access_token_secret' => "FzlSogRw6tpSUXdAhODPUpYt8CvK2AzzhpVquqxRaRNqj",
-			    'consumer_key' => "vTaaUVXJ6t6QPts0R7Ud1gASc",
-			    'consumer_secret' => "o0Whf2KARnknbSNVVRfSIJ4DyMuM9Nvwl9ODLLjUCudHyNfMHg"
+				'oauth_access_token' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'consumer_key' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'consumer_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 			);
 			//request urls to twitter
 			$url = "https://api.twitter.com/1.1/search/tweets.json";
