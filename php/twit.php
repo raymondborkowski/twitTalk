@@ -4,8 +4,6 @@
 		require_once('TwitterAPIExchange.php');
 		$anyFile = 'data/twitter_resultK.json';
 		$twitter_result = false;
-		echo("HERE");
-
 		if (file_exists($anyFile)) {
 		    $dataK = json_decode(file_get_contents($anyFile));
 		    if ($dataK->timestamp > time() - 1 * 30) {

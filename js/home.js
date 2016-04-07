@@ -48,7 +48,7 @@ function displayMedia(length, bottomTextImage, classID, arr, isMedia, time1, tim
 	           		document.getElementById(classID).style.backgroundImage =  "url('" + arr[ind][2] +"')";
 	           	if(ind == limit){
 	           		console.log("HERE");
-	           		var tempObj = callbackGetData();
+	           		callbackGetData();
 	                displayMedia(length, bottomTextImage, classID, arr, isMedia, time1, time2 );
 	           	}
 	       }, time1 + (time2 * ind));
@@ -79,6 +79,8 @@ function callbackGetData() {
 	var onlyText = splitObjMedia(obj, obj.statuses.length, false).textArr;
 	var onlyMediaKate = splitObjMedia(objKate, objKate.statuses.length, false).mediaArr;
 	var onlyTextKate = splitObjMedia(objKate, objKate.statuses.length, false).textArr;
+	var onlyMediaJ = splitObjMedia(objJ, objJ.statuses.length, false).mediaArr;
+	var onlyTextJ = splitObjMedia(objJ, objJ.statuses.length, false).textArr;
 	var onlyMediaJack = splitObjMedia(objJack, objJack.length, true).mediaArr;
 	var onlyTextJack = splitObjMedia(objJack, objJack.length, true).textArr;
 
@@ -87,26 +89,60 @@ function callbackGetData() {
 	var ksTextLength = Math.floor(onlyTextKate.length/6);
 	var jsTextLength = Math.floor(onlyTextJack.length/3);
 	var jsMediaLength = Math.floor(onlyMediaJack.length/2);
-	var object = {
-		otherText1 : splitArray(onlyText,Math.floor(onlyText.length/2)),//used
-		otherText2 : onlyText,//used           
-		otherMedia1 : splitArray(onlyMedia,otherMediaLength), //used
-		otherMedia2 : splitArray(onlyMedia,otherMediaLength),//used
-		otherMedia3 : onlyMedia,//used           
-		ksText1 : splitArray(onlyTextKate,ksTextLength),//Used
-		ksText2 : splitArray(onlyTextKate,ksTextLength),//used
-		ksText3 : splitArray(onlyTextKate,ksTextLength),//used
-		ksText4 : splitArray(onlyTextKate,ksTextLength),//used
-		ksText5 : splitArray(onlyTextKate,ksTextLength),//used
-		ksText6 : onlyTextKate,//used           
-		ksMedia : onlyMediaKate, //used           
-		jsText1 : splitArray(onlyTextJack,jsTextLength),//used
-		jsText2 : splitArray(onlyTextJack,jsTextLength),//used
-		jsText3 : onlyTextJack,//used           
-		jsMedia : splitArray(onlyMediaJack,jsMediaLength),//used
-		jsMedia1 : onlyMediaJack, //used     
-		onlyMediaJ : splitObjMedia(objJ, objJ.statuses.length, false).mediaArr,
-	    onlyTextJ : splitObjMedia(objJ, objJ.statuses.length, false).textArr
-	};
-	return object;	
+	var otherText1 = splitArray(onlyText,Math.floor(onlyText.length/2));//used
+	var otherText2 = onlyText;//used
+	var otherMedia1 = splitArray(onlyMedia,otherMediaLength); //used
+	var otherMedia2 = splitArray(onlyMedia,otherMediaLength);//used
+	var otherMedia3 = onlyMedia;//used
+	var ksText1 = splitArray(onlyTextKate,ksTextLength);//Used
+	var ksText2 = splitArray(onlyTextKate,ksTextLength);//used
+	var ksText3 = splitArray(onlyTextKate,ksTextLength);//used
+	var ksText4 = splitArray(onlyTextKate,ksTextLength);//used
+	var ksText5 = splitArray(onlyTextKate,ksTextLength);//used
+	var ksText6 = onlyTextKate;//used
+	var ksMedia = onlyMediaKate; //used
+	var jsText1 = splitArray(onlyTextJack,jsTextLength);//used
+	var jsText2 = splitArray(onlyTextJack,jsTextLength);//used
+	var jsText3 = onlyTextJack;//used
+	var jsMedia = splitArray(onlyMediaJack,jsMediaLength);//used
+	var jsMedia1 = onlyMediaJack; //used
 };
+
+
+
+var obj = getData('K');
+var objKate = getData('Kate');
+var objJ = getData('J');
+var objJack = getData('Jack');
+
+var onlyMedia = splitObjMedia(obj, obj.statuses.length, false).mediaArr;
+var onlyText = splitObjMedia(obj, obj.statuses.length, false).textArr;
+var onlyMediaKate = splitObjMedia(objKate, objKate.statuses.length, false).mediaArr;
+var onlyTextKate = splitObjMedia(objKate, objKate.statuses.length, false).textArr;
+var onlyMediaJ = splitObjMedia(objJ, objJ.statuses.length, false).mediaArr;
+var onlyTextJ = splitObjMedia(objJ, objJ.statuses.length, false).textArr;
+var onlyMediaJack = splitObjMedia(objJack, objJack.length, true).mediaArr;
+var onlyTextJack = splitObjMedia(objJack, objJack.length, true).textArr;
+
+//split them to display them in seperate divs
+var otherMediaLength = Math.floor(onlyMedia.length/3);
+var ksTextLength = Math.floor(onlyTextKate.length/6);
+var jsTextLength = Math.floor(onlyTextJack.length/3);
+var jsMediaLength = Math.floor(onlyMediaJack.length/2);
+var otherText1 = splitArray(onlyText,Math.floor(onlyText.length/2));//used
+var otherText2 = onlyText;//used
+var otherMedia1 = splitArray(onlyMedia,otherMediaLength); //used
+var otherMedia2 = splitArray(onlyMedia,otherMediaLength);//used
+var otherMedia3 = onlyMedia;//used
+var ksText1 = splitArray(onlyTextKate,ksTextLength);//Used
+var ksText2 = splitArray(onlyTextKate,ksTextLength);//used
+var ksText3 = splitArray(onlyTextKate,ksTextLength);//used
+var ksText4 = splitArray(onlyTextKate,ksTextLength);//used
+var ksText5 = splitArray(onlyTextKate,ksTextLength);//used
+var ksText6 = onlyTextKate;//used
+var ksMedia = onlyMediaKate; //used
+var jsText1 = splitArray(onlyTextJack,jsTextLength);//used
+var jsText2 = splitArray(onlyTextJack,jsTextLength);//used
+var jsText3 = onlyTextJack;//used
+var jsMedia = splitArray(onlyMediaJack,jsMediaLength);//used
+var jsMedia1 = onlyMediaJack; //used
