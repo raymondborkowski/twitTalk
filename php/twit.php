@@ -1,4 +1,5 @@
 <!-- PHP to get Tweeeets -->
+<!-- PHP to get Tweeeets -->
 	<?php
 		require_once('TwitterAPIExchange.php');
 		$anyFile = 'data/twitter_resultK.json';
@@ -6,7 +7,7 @@
 
 		if (file_exists($anyFile)) {
 		    $dataK = json_decode(file_get_contents($anyFile));
-		    if ($dataK->timestamp > time() - 2 * 60) {
+		    if ($dataK->timestamp > time() - 1 * 30) {
 		        $twitter_result = true;
 		    }
 		}
@@ -16,10 +17,10 @@
 		// cache doesn't exist or is older than 10 mins
 			$settings = array(
 				//Use consumer tokens from twitter dev
-				'oauth_access_token' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'consumer_key' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'consumer_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+				'oauth_access_token' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'consumer_key' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'consumer_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 			);
 			//request urls to twitter
 			$url = "https://api.twitter.com/1.1/search/tweets.json";
@@ -27,8 +28,8 @@
 			$requestMethod = "GET";
 
 			//query strings appeneded to request urls
-			$getfieldKate = "?q=from:katespadeny+OR+from:katespadeuk&count=100&result_type=recent&lang=en";
-			$getfield = '?q=kate+spade+OR+#missadventure+OR+katespade&count=100&result_type=recent&lang=en';
+			$getfieldKate = "?q=from:katespadeny+OR+from:katespadeuk&count=100&result_type=recent";
+			$getfield = '?q=kate+spade+OR+#missadventure+OR+katespade&count=100&result_type=recent';
 			$getfieldJack = "?screen_name=jackspadeny&count=3200&include_rts=true";
 			$getfieldJ = '?q=jackspadeny&count=100';
 			//start it up

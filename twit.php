@@ -3,14 +3,32 @@
 	<head>
 		<title>KS Real Time Talk</title>
 		<meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=1, user-scalable=0"/>
+		<meta http-equiv="refresh" content="120">
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/metro-style.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="js/freewall.js"></script>
 		<script type="text/javascript" src="js/home.js"></script>
-		<script> jQuery(window).load(function(){jQuery('#overlay').fadeOut();});</script>
 		<?php include 'php/twit.php'; ?>
+		<script> jQuery(window).load(function(){jQuery('#overlay').fadeOut();});
+function update() {
+    $.ajax({
+        url: 'php/twit.php', //php          
+        success: function (data) {
+        }
+    });
+}
+
+$(document).ready(update); // Call on page load
+//                ^^^^^^
+
+
+setInterval(update, 10000); //every 10 secs
+//          ^^^^^^
+
+		</script>
+		
 		<style type="text/css">
 			html,body {
 				margin: 0px;
@@ -234,7 +252,7 @@
 					<div id = "imgJSBIG" class = "map2"></div>
 					<div id = "jackMediaBig" class = "tempBottom">
 						<script>
-							displayMedia(jsMedia.length, "jackMediaBig", "imgJSBIG", jsMedia, true, 16000, 16000);
+							displayMedia(jsMedia.length, "jackMediaBig", "imgJSBIG", jsMedia, true, 1000, 1000);
 						</script>
 					</div>
 				</div>
@@ -248,14 +266,6 @@
 							</div>
 						</a>
 					</div>
-
-
-
-
-
-
-
-
 					<div class="item level-1 size222">
 						<div id = "otherIDJACK" class = "divCenter">
 							<script>displayMedia(onlyTextJ.length, "otherIDJACK", " ", onlyTextJ, false, 3000, 12000);</script>
@@ -285,7 +295,6 @@
 			</div> <!-- freewall -->
 		</div> <!-- layout -->
 		<script type="text/javascript">
-
 			var colour = [
 				"rgb(72, 166, 66)",
 				"rgb(212, 175,55)",
