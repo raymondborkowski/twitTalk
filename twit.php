@@ -3,7 +3,6 @@
 	<head>
 		<title>KS Real Time Talk</title>
 		<meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=1, user-scalable=0"/>
-		<meta http-equiv="refresh" content="120">
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/metro-style.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -11,22 +10,10 @@
 		<script type="text/javascript" src="js/freewall.js"></script>
 		<script type="text/javascript" src="js/home.js"></script>
 		<?php include 'php/twit.php'; ?>
-		<script> jQuery(window).load(function(){jQuery('#overlay').fadeOut();});
-function update() {
-    $.ajax({
-        url: 'php/twit.php', //php          
-        success: function (data) {
-        }
-    });
-}
-
-$(document).ready(update); // Call on page load
-//                ^^^^^^
-
-
-setInterval(update, 10000); //every 10 secs
-//          ^^^^^^
-
+		<script> 
+			jQuery(window).load(function(){
+				jQuery('#overlay').fadeOut();
+			});
 		</script>
 		
 		<style type="text/css">
@@ -81,6 +68,10 @@ setInterval(update, 10000); //every 10 secs
 
 	</head>
 	<body>
+	<script>
+	var tempObject = callbackGetData();
+	console.log(tempObject.obj);
+	</script>
 		<div id="overlay">
 		    <img src="i/201.gif" alt="Loading" /><br/>
 		    Loading...
@@ -99,12 +90,12 @@ setInterval(update, 10000); //every 10 secs
 				<div class="size22 level1" data-fixSize=0 data-nested=".size11" data-cellW=150 data-cellH=150 data-gutterX=10 >
 					<div class="item size11">
 						<div id = "otherText1ID" class = "divCenter">
-							<script>displayMedia(otherText1.length, "otherText1ID", " ", otherText1, false, 13000, 13000);</script>
+							<script>displayMedia(tempObject.otherText1.length, "otherText1ID", " ", tempObject.otherText1, false, 13000, 13000);</script>
 						</div>
 					</div>
 					<div class="item size11">
 						<div id = "otherText2ID" class = "divCenter">
-							<script>displayMedia(otherText2.length, "otherText2ID", " ", otherText2, false, 13500, 13500);</script>
+							<script>displayMedia(tempObject.otherText2.length, "otherText2ID", " ", tempObject.otherText2, false, 13500, 13500);</script>
 						</div>
 					</div>
 
@@ -135,7 +126,7 @@ setInterval(update, 10000); //every 10 secs
 						</div>
 						<div id = "otherMedia3BottomText" class = "tempBottomSmall">
 							<!-- KSMEDIA!!!!-->
-							<script>displayMedia(otherMedia3.length, "otherMedia3BottomText", "otherMedia3IMG", otherMedia3, true, 15000, 18000);</script>
+							<script>displayMedia(tempObject.otherMedia3.length, "otherMedia3BottomText", "otherMedia3IMG", tempObject.otherMedia3, true, 15000, 18000);</script>
 						</div>
 					</div>
 				</div>
@@ -153,22 +144,22 @@ setInterval(update, 10000); //every 10 secs
 				<div class="size22 level1" data-nested=".size11" data-cellW=150 data-cellH=150 data-gutterX=10 >
 					<div class="item size11">
 						<div id = "ksText1ID" class = "divCenter">
-							<script>displayMedia(ksText1.length, "ksText1ID", " ", ksText1, false, 13000, 15000);</script>
+							<script>displayMedia(tempObject.ksText1.length, "ksText1ID", " ", tempObject.ksText1, false, 13000, 15000);</script>
 						</div>	
 					</div>
 					<div class="item size11">
 							<div id = "ksText4ID" class = "divCenter">
-								<script>displayMedia(ksText4.length, "ksText4ID", " ", ksText4, false, 15000, 16000);</script>
+								<script>displayMedia(tempObject.ksText4.length, "ksText4ID", " ", tempObject.ksText4, false, 15000, 16000);</script>
 							</div>
 					</div>
 					<div class="item size11">
 						<div id = "ksText3ID" class = "divCenter">
-							<script>displayMedia(ksText3.length, "ksText3ID", " ", ksText3, false, 14000, 15000);</script>
+							<script>displayMedia(tempObject.ksText3.length, "ksText3ID", " ", tempObject.ksText3, false, 14000, 15000);</script>
 						</div>
 					</div>
 					<div class="item size11">
 						<div id = "ksText6ID" class = "divCenter">
-							<script>displayMedia(ksText6.length, "ksText6ID", " ", ksText6, false, 13000, 17000);</script>
+							<script>displayMedia(tempObject.ksText6.length, "ksText6ID", " ", tempObject.ksText6, false, 13000, 17000);</script>
 						</div>
 					</div>
 				</div>
@@ -186,12 +177,12 @@ setInterval(update, 10000); //every 10 secs
 						<div id = "jsMediaIMG1" class = "map2">
 						</div>
 						<div id = "jsMediaBottom1" class = "tempBottomSmall">
-							<script>displayMedia(jsMedia1.length, "jsMediaBottom1", "jsMediaIMG1", jsMedia1, true, 17000, 17000);</script>
+							<script>displayMedia(tempObject.jsMedia1.length, "jsMediaBottom1", "jsMediaIMG1", tempObject.jsMedia1, true, 17000, 17000);</script>
 						</div>
 					</div>
 					<div class="item level-1 size222">
 						<div id = "ksText2ID" class = "divCenter">
-							<script>displayMedia(ksText2.length, "ksText2ID", " ", ksText2, false, 14000, 12000);</script>
+							<script>displayMedia(tempObject.ksText2.length, "ksText2ID", " ", tempObject.ksText2, false, 14000, 12000);</script>
 						</div>
 					</div>
 				</div>
@@ -225,17 +216,17 @@ setInterval(update, 10000); //every 10 secs
 					</div>
 					<div class="item size11">
 						<div id = "jack2ID" class = "divCenter">
-							<script>displayMedia(jsText2.length, "jack2ID", " ", jsText2, false, 13000, 15000);</script>
+							<script>displayMedia(tempObject.jsText2.length, "jack2ID", " ", tempObject.jsText2, false, 13000, 15000);</script>
 						</div>
 					</div>
 					<div class="item size11">
 						<div id = "jack3ID" class = "divCenter">
-							<script>displayMedia(jsText3.length, "jack3ID", " ", jsText3, false, 12000, 17000);</script>
+							<script>displayMedia(tempObject.jsText3.length, "jack3ID", " ", tempObject.jsText3, false, 12000, 17000);</script>
 						</div>
 					</div>
 					<div class="item size11">
 						<div id = "jack1ID" class = "divCenter">
-							<script>displayMedia(jsText1.length, "jack1ID", " ", jsText1, false, 14000, 16000);</script>
+							<script>displayMedia(tempObject.jsText1.length, "jack1ID", " ", tempObject.jsText1, false, 14000, 16000);</script>
 						</div>
 					</div>
 				</div>
@@ -244,7 +235,7 @@ setInterval(update, 10000); //every 10 secs
 					<div id = "otherMedia2IMG" class = "map2">
 					</div>
 					<div id = "otherMedia2BottomText" class = "tempBottom">
-						<script>displayMedia(otherMedia2.length, "otherMedia2BottomText", "otherMedia2IMG", otherMedia2, true, 17000, 15000);</script>
+						<script>displayMedia(tempObject.otherMedia2.length, "otherMedia2BottomText", "otherMedia2IMG", tempObject.otherMedia2, true, 17000, 15000);</script>
 					</div>
 				</div>
 				<!-- JS ENTITY BIG PICTURE -->
@@ -252,7 +243,7 @@ setInterval(update, 10000); //every 10 secs
 					<div id = "imgJSBIG" class = "map2"></div>
 					<div id = "jackMediaBig" class = "tempBottom">
 						<script>
-							displayMedia(jsMedia.length, "jackMediaBig", "imgJSBIG", jsMedia, true, 1000, 1000);
+							displayMedia(tempObject.jsMedia.length, "jackMediaBig", "imgJSBIG", tempObject.jsMedia, true, 1000, 1000);
 						</script>
 					</div>
 				</div>
@@ -268,12 +259,12 @@ setInterval(update, 10000); //every 10 secs
 					</div>
 					<div class="item level-1 size222">
 						<div id = "otherIDJACK" class = "divCenter">
-							<script>displayMedia(onlyTextJ.length, "otherIDJACK", " ", onlyTextJ, false, 3000, 12000);</script>
+							<script>displayMedia(tempObject.onlyTextJ.length, "otherIDJACK", " ", tempObject.onlyTextJ, false, 3000, 12000);</script>
 						</div>
 					</div>
 					<div class="item level-1 size222">
 						<div id = "jack1ID" class = "divCenter">
-							<script>displayMedia(jsText1.length, "jack1ID", " ", jsText1, false, 13000, 14000);</script>
+							<script>displayMedia(tempObject.jsText1.length, "jack1ID", " ", tempObject.jsText1, false, 13000, 14000);</script>
 						</div>
 					</div>
 				</div>
@@ -281,7 +272,7 @@ setInterval(update, 10000); //every 10 secs
 					<div id = "ksMediaIMG" class = "map2">
 					</div>
 					<div id = "ksMediaBottomText" class = "tempBottom">
-						<script>displayMedia(ksMedia.length, "ksMediaBottomText", "ksMediaIMG", ksMedia, true, 14000, 17000);</script>
+						<script>displayMedia(tempObject.ksMedia.length, "ksMediaBottomText", "ksMediaIMG", tempObject.ksMedia, true, 14000, 17000);</script>
 					</div>
 				</div>
 				<!-- ADD NEW -->
@@ -289,7 +280,7 @@ setInterval(update, 10000); //every 10 secs
 					<div id = "jOtherMedia" class = "map2">
 					</div>
 					<div id = "jOtherMediaBottomText" class = "tempBottom">
-						<script>displayMedia(onlyMediaJ.length, "jOtherMediaBottomText", "jOtherMedia", onlyMediaJ, true, 8000, 4000);</script>
+						<script>displayMedia(tempObject.onlyMediaJ.length, "jOtherMediaBottomText", "jOtherMedia", tempObject.onlyMediaJ, true, 8000, 4000);</script>
 					</div>
 				</div>
 			</div> <!-- freewall -->
