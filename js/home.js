@@ -33,7 +33,7 @@ function splitArray(arr, length){
 };
 
 //Display the items in the divs of choice
-function displayMedia(length, bottomTextImage, classID, arr, isMedia){
+function displayMedia(length, bottomTextImage, classID, arr, isMedia, time1, time2){
 	var limit = (length - 1);
 	document.getElementById(bottomTextImage).innerHTML = "@" + arr[0][0] + ":</br>" + arr[0][1];
 	if(isMedia)
@@ -45,9 +45,9 @@ function displayMedia(length, bottomTextImage, classID, arr, isMedia){
 	           	if(isMedia)
 	           		document.getElementById(classID).style.backgroundImage =  "url('" + arr[ind][2] +"')";
 	           	if(ind == limit){
-	               displayMedia(length, bottomTextImage, classID, arr, isMedia );
+	               displayMedia(length, bottomTextImage, classID, arr, isMedia, time1, time2 );
 	           	}
-	       }, 1000 + (1000 * ind));
+	       }, time1 + (time2 * ind));
 	   })(i);
 	}
 };

@@ -9,8 +9,9 @@
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="js/freewall.js"></script>
 		<script type="text/javascript" src="js/home.js"></script>
-		<script> jQuery(window).load(function(){jQuery('#overlay').fadeOut();});</script>
-		<?php include 'php/twit.php'; ?>
+		<?php 
+			include 'php/twit.php'; 
+		?>
 		<style type="text/css">
 			html,body {
 				margin: 0px;
@@ -46,27 +47,9 @@
 				width: 320px;
 				height: 320px;
 			}
-			#overlay {
-		        background: #ffffff;
-		        color: #666666;
-		        position: fixed;
-		        height: 100%;
-		        width: 100%;
-		        z-index: 5000;
-		        top: 0;
-		        left: 0;
-		        float: left;
-		        text-align: center;
-		        padding-top: 25%;
-		    }
 		</style>
-
 	</head>
-	<body>
-		<div id="overlay">
-		    <img src="i/201.gif" alt="Loading" /><br/>
-		    Loading...
-		</div>
+		<body>
 		<!-- Move to seperate JS file -->
 		<div class="layout">
 
@@ -279,7 +262,7 @@
 					<div id = "jOtherMedia" class = "map2">
 					</div>
 					<div id = "jOtherMediaBottomText" class = "tempBottom">
-						<script>displayMedia(onlyMediaJ.length, "jOtherMediaBottomText", "jOtherMedia", onlyMediaJ, true, 8000, 4000);</script>
+						<script>displayMedia(onlyMediaJ.length, "jOtherMediaBottomText", "jOtherMedia", onlyMediaJ, true, 8000, 14000);</script>
 					</div>
 				</div>
 			</div> <!-- freewall -->
