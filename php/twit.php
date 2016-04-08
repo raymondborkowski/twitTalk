@@ -6,7 +6,7 @@
 
 		if (file_exists($anyFile)) {
 		    $dataK = json_decode(file_get_contents($anyFile));
-		    if ($dataK->timestamp > time() - 2 * 60) {
+		    if ($dataK->timestamp > time() - 1 * 60) {
 		        $twitter_result = true;
 		    }
 		}
@@ -16,10 +16,10 @@
 		// cache doesn't exist or is older than 10 mins
 			$settings = array(
 				//Use consumer tokens from twitter dev
-				'oauth_access_token' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'consumer_key' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			    'consumer_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+				'oauth_access_token' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'consumer_key' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			    'consumer_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 			);
 			//request urls to twitter
 			$url = "https://api.twitter.com/1.1/search/tweets.json";
@@ -52,9 +52,9 @@
 		    $dataKate = array ('twitter_result' => $stringKate, 'timestamp' => time());
 		    $dataJ = array ('twitter_result' => $stringJ, 'timestamp' => time());
 		    $dataJack = array ('twitter_result' => $stringJack, 'timestamp' => time());
-		    file_put_contents('data/twitter_resultK.json', json_encode($dataK, JSON_PRETTY_PRINT));
-		    file_put_contents('data/twitter_resultKate.json', json_encode($dataKate,JSON_PRETTY_PRINT));
-		    file_put_contents('data/twitter_resultJ.json', json_encode($dataJ,JSON_PRETTY_PRINT));
-		    file_put_contents('data/twitter_resultJack.json', json_encode($dataJack,JSON_PRETTY_PRINT));
+		    file_put_contents('data/twitter_resultK.json', json_encode($dataK));
+		    file_put_contents('data/twitter_resultKate.json', json_encode($dataKate));
+		    file_put_contents('data/twitter_resultJ.json', json_encode($dataJ));
+		    file_put_contents('data/twitter_resultJack.json', json_encode($dataJack));
 		}
 	?>
