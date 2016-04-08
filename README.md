@@ -5,6 +5,7 @@
 TwitTalk is a very simplistic use of the Twitter API. It encompasses both the search and user profile API to grab both text and media tweets. Right now, it will take the last x amount of tweets from users where the language is determined to be english(en) who have mentioned Kate Spade/Jack Spade or the tweets that are from Kate Spade and Company entities. The layout is built with JQUERY ([Freewall.js](http://vnjs.net/www/project/freewall/)). The twitter process is built with PHP and the rest is just vanilla JS.
 
 ### DEMO
+Please use demo at own risk. This is still being fixed/upgraded and may be down at any given time.
 https://www.raymondborkowski.com/twit/twit.php
 
 ### THINGS TO COME
