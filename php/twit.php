@@ -6,7 +6,7 @@
 
 		if (file_exists($anyFile)) {
 		    $dataK = json_decode(file_get_contents($anyFile));
-		    if ($dataK->timestamp > time() - 2 * 60) {
+		    if ($dataK->timestamp > time() - 1 * 60) {
 		        $twitter_result = true;
 		    }
 		}
