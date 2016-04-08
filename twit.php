@@ -90,12 +90,12 @@
 				<div class="size22 level1" data-fixSize=0 data-nested=".size11" data-cellW=150 data-cellH=150 data-gutterX=10 >
 					<div class="item size11">
 						<div id = "otherText1ID" class = "divCenter">
-							<script>displayMedia(tempObject.otherText1.length, "otherText1ID", " ", tempObject.otherText1, false, 13000, 13000);</script>
+							<script>displayMedia(tempObject.otherText1.length, "otherText1ID", " ", tempObject.otherText1, false, 13000, 13000, "otherText1");</script>
 						</div>
 					</div>
 					<div class="item size11">
 						<div id = "otherText2ID" class = "divCenter">
-							<script>displayMedia(tempObject.otherText2.length, "otherText2ID", " ", tempObject.otherText2, false, 13500, 13500);</script>
+							<script>displayMedia(tempObject.otherText2.length, "otherText2ID", " ", tempObject.otherText2, false, 13500, 13500, "otherText2");</script>
 						</div>
 					</div>
 
@@ -126,7 +126,7 @@
 						</div>
 						<div id = "otherMedia3BottomText" class = "tempBottomSmall">
 							<!-- KSMEDIA!!!!-->
-							<script>displayMedia(tempObject.otherMedia3.length, "otherMedia3BottomText", "otherMedia3IMG", tempObject.otherMedia3, true, 15000, 18000);</script>
+							<script>displayMedia(tempObject.otherMedia3.length, "otherMedia3BottomText", "otherMedia3IMG", tempObject.otherMedia3, true, 15000, 18000, "otherMedia3");</script>
 						</div>
 					</div>
 				</div>
@@ -144,22 +144,22 @@
 				<div class="size22 level1" data-nested=".size11" data-cellW=150 data-cellH=150 data-gutterX=10 >
 					<div class="item size11">
 						<div id = "ksText1ID" class = "divCenter">
-							<script>displayMedia(tempObject.ksText1.length, "ksText1ID", " ", tempObject.ksText1, false, 13000, 15000);</script>
+							<script>displayMedia(tempObject.ksText1.length, "ksText1ID", " ", tempObject.ksText1, false, 13000, 15000, "ksText1");</script>
 						</div>	
 					</div>
 					<div class="item size11">
 							<div id = "ksText4ID" class = "divCenter">
-								<script>displayMedia(tempObject.ksText4.length, "ksText4ID", " ", tempObject.ksText4, false, 15000, 16000);</script>
+								<script>displayMedia(tempObject.ksText4.length, "ksText4ID", " ", tempObject.ksText4, false, 15000, 16000, "ksText4");</script>
 							</div>
 					</div>
 					<div class="item size11">
 						<div id = "ksText3ID" class = "divCenter">
-							<script>displayMedia(tempObject.ksText3.length, "ksText3ID", " ", tempObject.ksText3, false, 14000, 15000);</script>
+							<script>displayMedia(tempObject.ksText3.length, "ksText3ID", " ", tempObject.ksText3, false, 14000, 15000, "ksText3");</script>
 						</div>
 					</div>
 					<div class="item size11">
 						<div id = "ksText6ID" class = "divCenter">
-							<script>displayMedia(tempObject.ksText6.length, "ksText6ID", " ", tempObject.ksText6, false, 13000, 17000);</script>
+							<script>displayMedia(tempObject.ksText6.length, "ksText6ID", " ", tempObject.ksText6, false, 13000, 17000, "ksText6");</script>
 						</div>
 					</div>
 				</div>
@@ -177,12 +177,12 @@
 						<div id = "jsMediaIMG1" class = "map2">
 						</div>
 						<div id = "jsMediaBottom1" class = "tempBottomSmall">
-							<script>displayMedia(tempObject.jsMedia1.length, "jsMediaBottom1", "jsMediaIMG1", tempObject.jsMedia1, true, 17000, 17000);</script>
+							<script>displayMedia(tempObject.jsMedia1.length, "jsMediaBottom1", "jsMediaIMG1", tempObject.jsMedia1, true, 17000, 17000, "jsMedia1");</script>
 						</div>
 					</div>
 					<div class="item level-1 size222">
 						<div id = "ksText2ID" class = "divCenter">
-							<script>displayMedia(tempObject.ksText2.length, "ksText2ID", " ", tempObject.ksText2, false, 14000, 12000);</script>
+							<script>displayMedia(tempObject.ksText2.length, "ksText2ID", " ", tempObject.ksText2, false, 14000, 12000, "ksText2");</script>
 						</div>
 					</div>
 				</div>
@@ -216,17 +216,17 @@
 					</div>
 					<div class="item size11">
 						<div id = "jack2ID" class = "divCenter">
-							<script>displayMedia(tempObject.jsText2.length, "jack2ID", " ", tempObject.jsText2, false, 13000, 15000);</script>
+							<script>displayMedia(tempObject.jsText2.length, "jack2ID", " ", tempObject.jsText2, false, 13000, 15000, "jsText2");</script>
 						</div>
 					</div>
 					<div class="item size11">
 						<div id = "jack3ID" class = "divCenter">
-							<script>displayMedia(tempObject.jsText3.length, "jack3ID", " ", tempObject.jsText3, false, 12000, 17000);</script>
+							<script>displayMedia(tempObject.jsText3.length, "jack3ID", " ", tempObject.jsText3, false, 12000, 17000, "jsText3");</script>
 						</div>
 					</div>
 					<div class="item size11">
 						<div id = "jack1ID" class = "divCenter">
-							<script>displayMedia(tempObject.jsText1.length, "jack1ID", " ", tempObject.jsText1, false, 14000, 16000);</script>
+							<script>displayMedia(tempObject.jsText1.length, "jack1ID", " ", tempObject.jsText1, false, 14000, 16000, "jsText1");</script>
 						</div>
 					</div>
 				</div>
@@ -235,7 +235,7 @@
 					<div id = "otherMedia2IMG" class = "map2">
 					</div>
 					<div id = "otherMedia2BottomText" class = "tempBottom">
-						<script>displayMedia(tempObject.otherMedia2.length, "otherMedia2BottomText", "otherMedia2IMG", tempObject.otherMedia2, true, 17000, 15000);</script>
+						<script>displayMedia(tempObject.otherMedia2.length, "otherMedia2BottomText", "otherMedia2IMG", tempObject.otherMedia2, true, 17000, 15000, "otherMedia2");</script>
 					</div>
 				</div>
 				<!-- JS ENTITY BIG PICTURE -->
@@ -243,7 +243,7 @@
 					<div id = "imgJSBIG" class = "map2"></div>
 					<div id = "jackMediaBig" class = "tempBottom">
 						<script>
-							displayMedia(tempObject.jsMedia.length, "jackMediaBig", "imgJSBIG", tempObject.jsMedia, true, 1000, 1000);
+							displayMedia(tempObject.jsMedia.length, "jackMediaBig", "imgJSBIG", tempObject.jsMedia, true, 10000, 10000, "jsMedia");
 						</script>
 					</div>
 				</div>
@@ -259,12 +259,12 @@
 					</div>
 					<div class="item level-1 size222">
 						<div id = "otherIDJACK" class = "divCenter">
-							<script>displayMedia(tempObject.onlyTextJ.length, "otherIDJACK", " ", tempObject.onlyTextJ, false, 3000, 12000);</script>
+							<script>displayMedia(tempObject.onlyTextJ.length, "otherIDJACK", " ", tempObject.onlyTextJ, false, 3000, 12000, "onlyTextJ");</script>
 						</div>
 					</div>
 					<div class="item level-1 size222">
 						<div id = "jack1ID" class = "divCenter">
-							<script>displayMedia(tempObject.jsText1.length, "jack1ID", " ", tempObject.jsText1, false, 13000, 14000);</script>
+							<script>displayMedia(tempObject.jsText1.length, "jack1ID", " ", tempObject.jsText1, false, 13000, 14000, "jsText1");</script>
 						</div>
 					</div>
 				</div>
@@ -272,7 +272,7 @@
 					<div id = "ksMediaIMG" class = "map2">
 					</div>
 					<div id = "ksMediaBottomText" class = "tempBottom">
-						<script>displayMedia(tempObject.ksMedia.length, "ksMediaBottomText", "ksMediaIMG", tempObject.ksMedia, true, 14000, 17000);</script>
+						<script>displayMedia(tempObject.ksMedia.length, "ksMediaBottomText", "ksMediaIMG", tempObject.ksMedia, true, 14000, 17000, "ksMedia");</script>
 					</div>
 				</div>
 				<!-- ADD NEW -->
@@ -280,7 +280,7 @@
 					<div id = "jOtherMedia" class = "map2">
 					</div>
 					<div id = "jOtherMediaBottomText" class = "tempBottom">
-						<script>displayMedia(tempObject.onlyMediaJ.length, "jOtherMediaBottomText", "jOtherMedia", tempObject.onlyMediaJ, true, 8000, 4000);</script>
+						<script>displayMedia(tempObject.onlyMediaJ.length, "jOtherMediaBottomText", "jOtherMedia", tempObject.onlyMediaJ, true, 1000, 1000, "onlyMediaJ");</script>
 					</div>
 				</div>
 			</div> <!-- freewall -->

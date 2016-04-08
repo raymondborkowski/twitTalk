@@ -35,7 +35,8 @@ function splitArray(arr, length){
 
 //NEED TO GRAB ONLY THE JSON FILE I WANT BY BRINGING OVER DIV NAME???????????????????????????????????
 //Display the items in the divs of choice
-function displayMedia(length, bottomTextImage, classID, arr, isMedia, time1, time2){
+function displayMedia(length, bottomTextImage, classID, arr, isMedia, time1, time2, nameArray){
+	arr = callbackGetData()[nameArray];
 	var limit = (length - 1);
 	document.getElementById(bottomTextImage).innerHTML = "@" + arr[0][0] + ":</br>" + arr[0][1];
 	if(isMedia)
@@ -47,9 +48,8 @@ function displayMedia(length, bottomTextImage, classID, arr, isMedia, time1, tim
 	           	if(isMedia)
 	           		document.getElementById(classID).style.backgroundImage =  "url('" + arr[ind][2] +"')";
 	           	if(ind == limit){
-	           		console.log("HERE");
 	           		var tempObj = callbackGetData();
-	                displayMedia(length, bottomTextImage, classID, arr, isMedia, time1, time2 );
+	                displayMedia(length, bottomTextImage, classID, arr, isMedia, time1, time2, nameArray );
 	           	}
 	       }, time1 + (time2 * ind));
 	   })(i);
