@@ -14,12 +14,12 @@ https://www.raymondborkowski.com/twit/twit.php
 * Add callback to call ajax call after looped through all tweets (4 mins?)
 * ~~Add Page loader .gif until page has successfully loaded~~
 * ~~Add Kate Spade Colors~~
-* Filter expletive words
+* ~~Filter expletive words~~
 * Add twitter videos to auto play
 *>>  With this, make video div last the full length of the video or if gif 2x video length
 * Add Instagram API
-* Add newest #MissAdventure Video from YouTube with API
-* SPEED UP
+* ~~Add newest #MissAdventure Video from YouTube with API~~
+* SPEED UP - Yes but still needs to enhance
 
 ### How to get this to work for you
 As I stated above, this is a very simple Twitter API use. To get this to work for you, you will just need to enter your access tokens in php/twit.php and change the query strings to whatever you want to search! After that, throw it up on your localhost and it should work fresh out of the box!
