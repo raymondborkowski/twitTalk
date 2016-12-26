@@ -24,5 +24,8 @@ https://www.raymondborkowski.com/twit/twit.php
 ### How to get this to work for you
 As I stated above, this is a very simple Twitter API use. To get this to work for you, you will just need to enter your access tokens in php/twit.php and change the query strings to whatever you want to search! After that, throw it up on your localhost and it should work fresh out of the box!
 
+### Cron Job Set-up
+`/usr/local/bin/php -q /home/rborkows/public_html/twit/php/twit.php`
+
 ### Authors and Contributors
 This was made by @raymondborkowski If you have any questions/concerns/comments, please go ahead and let me know! You can reach me at ray @ raymondborkowski.com. 
